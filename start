@@ -1,0 +1,9 @@
+#!/bin/bash
+
+ARG_PORT=${1:-80}
+
+echo "listening on $ARG_PORT"
+
+sed -i -e "s/^Listen 80/Listen $ARG_PORT/" "$HTTPD_PREFIX/conf/httpd.conf"
+
+exec httpd-foreground
